@@ -54,8 +54,8 @@ categorical_dependence = function(mtx, alpha) {
   crit_int=qchisq(alpha, (nrow(mtx) - 1) *(ncol(mtx) - 1))
   # H0 is rejected (dependecy exists on alpha significance level)
   if (tc > crit_int) {
-      res[0] = pearson_dependence_coefficient(tc, emtx[nrow(emtx), ncol(emtx)])
-      res[1] = cramer_dependence_coefficient(tc, emtx[nrow(emtx), ncol(emtx)], nrow(mtx))
+      res[1] = pearson_dependence_coefficient(tc, emtx[nrow(emtx), ncol(emtx)])
+      res[2] = cramer_dependence_coefficient(tc, emtx[nrow(emtx), ncol(emtx)], ncol(mtx))
       return(res)
   }
   return(res)
