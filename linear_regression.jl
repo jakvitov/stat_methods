@@ -48,7 +48,7 @@ function plot_model(model::RegressionModel)
     y1 = predict(model, 0)
     y2, predict(model, 1)
     scatter(model.x_in, model.y_in, label="Plot for regression model.")
-    plot!([0, 1], [y1, v2])
+    plot!([0, 1], [y1, y2])
     display(plot)
 end
 
