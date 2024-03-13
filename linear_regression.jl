@@ -32,6 +32,15 @@ function get_intercept(model::RegresssionModel)
     return vector_mean(model.in_y)-model.slope*vector_mean(model.in_x)
 end
 
+#Enter prediction of the x value based on the given model
+function predict(model::RegresssionModel, x::Float64)
+    if model.slope == undef || model.intercept == undef
+        throw("Intercept and slope missing!")
+    end
+
+    return model.slope*x + model.intercept
+end
+
 #Init function for a regression model
 function create_regression_model(in_x::Vector{Float64}, in_y::Vector{Float64})
     res::RegresssionModel = RegresssionModel()
@@ -42,6 +51,6 @@ function create_regression_model(in_x::Vector{Float64}, in_y::Vector{Float64})
     return res
 end
 
-export create_regression_model,RegresssionModel
+export create_regression_model,RegresssionModel, predict
 
 end
